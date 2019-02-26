@@ -9,8 +9,10 @@ import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class HomePresenter(private val networkService: NetworkService, private val view: HomeContract.View): HomeContract.Presenter {
+class HomePresenter @Inject constructor(private val networkService: NetworkService, private val view: HomeContract.View):
+    HomeContract.Presenter {
 
     override fun getAlbums(album: String) {
         networkService.getAlbums(METHOD, album, API_KEY, FORMAT)
